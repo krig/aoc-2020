@@ -1,0 +1,5 @@
+#!/bin/bash
+day="${1:-$(date "+%-d")}"
+echo $day
+cargo new --bin --vcs none --name aoc-$1 $1
+
