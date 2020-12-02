@@ -7,8 +7,11 @@ fn policy_ok(policy: &str, password: &str) -> bool {
     let lo: usize = caps.get(1).unwrap().as_str().parse().unwrap();
     let hi: usize = caps.get(2).unwrap().as_str().parse().unwrap();
     let ch: char = caps.get(3).unwrap().as_str().chars().next().unwrap();
-    let n = password.chars().filter(|pc| pc == &ch).count();
-    n >= lo && n <= hi
+
+    let p1: char = password.chars().nth(lo - 1).unwrap_or('\0');
+    let p2: char = password.chars().nth(hi - 1).unwrap_or('\0');
+
+    (ch == p1 && ch != p2) || (ch != p1 && ch == p2)
 }
 
 fn main() {
