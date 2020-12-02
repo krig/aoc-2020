@@ -1,4 +1,5 @@
 #!/bin/sh
-cd $1
-cargo run
+day="${1:-$(date "+%-d")}"
+cd $day
+cat input | cargo run
 
